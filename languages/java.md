@@ -1,5 +1,16 @@
 # Java
 
+## Tasks
+```
+Make a git repo by the name of java-demo
+For each question-type, make a corresponding file for that, having 5 answers/questions in each file.
+and save the same in git.
+A total of 14 commits must be there, in a clean and presentable manner with each commit showing the answers of one topic.
+
+For each topic, you've to make a Pull Request, and make a commit for each of the 5 answers solved for the same.
+Hint -> Use the branch checkout, and merge features to do this.
+```
+
 ```
 1. Local Installation
 Download intellij Idea Community.
@@ -28,6 +39,13 @@ Search [ 7 Exercises with Solution ]
 ## Springboot
 
 Proceed with this once the top tasks are completed.
+
+## Tasks
+```
+Make a git repo by the name of springboot-demo
+On starting the below project, commit the whole project, after each video.
+A total of atleast 15 commits should be there after the videos end.
+```
 
 https://www.youtube.com/watch?v=35EQXmHKZYs&ab_channel=Telusko
 

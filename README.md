@@ -34,11 +34,22 @@ The point of this training is to prepare you for this industry. Think of this kn
 
 Start the next step, in the following manner.
 
+## Day 1 
 Common for everyone
 - [Tool-Belt](./tool-belt.md)
 
-Language Specific
-- [Database](./languages/database.md) (For everyone)
+## Day 2
+Common for everyone
+- [MySQL](./languages/mysql.md)
+- [Postgres](./languages/postgres.md)
+
+## Day 3, 4, 5
+```
+Any one 1 language out of Python/Java/Angular
+For Full stack devs - 2 day Java/Python + 1 Day Angular
+BE Devs - 3 day Java/Python
+FE Devs - 3 day Angular
+```
 
 Backend Specific (Java preferred)
 - [Python](./languages/python.md)

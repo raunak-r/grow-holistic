@@ -32,6 +32,9 @@ Office Tools
 - What is Inspect Element in Chrome?
     - See all the videos in this playlist - https://www.youtube.com/watch?v=kwFwN1M0M98&list=PLRKyZvuMYSIPFWe4ruCd7r9BozthKyXHB&ab_channel=CheezyCode
 
+    ## Tasks
+    - GIT - make a list of 5 important commands that is required on daily basis.
+
 # How to google
 - The most important skill that anyone can develop in this 21st century is to how to google efficiently.
 Given the amount of knowledge that is present, how can find the most relevant information?
@@ -42,5 +45,7 @@ Given the amount of knowledge that is present, how can find the most relevant in
 - [What is stackoverflow?](https://stackoverflow.blog/2019/08/07/what-every-developer-should-learn-early-on/)
 
 # Books (Must Read)
+
+Make a habit to read 1 chapter every week.
 
 - Clean Code by Robert C. Martin - https://www.pdfdrive.com/a-handbook-of-agile-software-craftsmanship-by-robert-c-martinpdf-e36963194.html

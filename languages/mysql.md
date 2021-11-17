@@ -2,6 +2,13 @@
 
 https://www3.ntu.edu.sg/home/ehchua/programming/sql/MySQL_HowTo.html#zz-1
 
+```
+Before proceeding, make a git repo by the name of mysql-demo or postgres-demo
+and save all the scripts in its own individual file.
+
+At the end of this exercise you will have around 3-4 scripts saved.
+```
+
 The following topics have to be done
 ```
 1.  Introduction to Relational Database and SQL
@@ -28,4 +35,6 @@ An Employee table with at least 5 fields
 A project table with at least 2 fields.
 Constraints - A project cannot be created without 0 employees associated with it.
 An employee will work on only one project.
+
+Save these sql scripts under the folder name 'project-db-design' in the same git repo you've created for Database.
 ```
