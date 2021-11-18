@@ -45,7 +45,6 @@ Common for everyone
 
 ## Day 3, 4, 5
 ```
-Any one 1 language out of Python/Java/Angular
 For Full stack devs - 2 day Java/Python + 1 Day Angular
 BE Devs - 3 day Java/Python
 FE Devs - 3 day Angular
@@ -55,7 +54,7 @@ Backend Specific (Java preferred)
 - [Python](./languages/python.md)
 - [Java](./languages/java.md)
 
-Frontend Specific (Java preferred)
+Frontend Specific
 - [Angular](./languages/angular.md)
 
 For Python Devs
