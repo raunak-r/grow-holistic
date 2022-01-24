@@ -34,28 +34,22 @@ The point of this training is to prepare you for this industry. Think of this kn
 
 Start the next step, in the following manner.
 
-## Day 1 
-Common for everyone
+## Common for everyone
+- [Git](./topics/git.md)
 - [Tool-Belt](./tool-belt.md)
 
-## Day 2
+## Databases
 Common for everyone
-- [MySQL](./languages/mysql.md)
-- [Postgres](./languages/postgres.md)
+- [Databases](./topics/databases.md)
 
-## Day 3, 4, 5
-```
-For Full stack devs - 2 day Java/Python + 1 Day Angular
-BE Devs - 3 day Java/Python
-FE Devs - 3 day Angular
-```
+## Language Specific
 
-Backend Specific (Java preferred)
-- [Python](./languages/python.md)
-- [Java](./languages/java.md)
+Backend Specific
+- [Java](./topics/java.md)
 
 Frontend Specific
-- [Angular](./languages/angular.md)
+- [Angular](./topics/angular.md)
 
 For Python Devs
-- [Python & Django](./languages/PythonDjangoIn7Days.md)
+- [Python](./topics/python.md)
+- [Django](./topics/django.md)
