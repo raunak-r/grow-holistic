@@ -45,3 +45,15 @@ DAY 5
 nested formgroups
 Styling - basic bootstrap classes, styles, div tags, col-md usage etc
 ```
+
+## Tasks
+```
+Refer https://angular.io/guide/example-apps-list
+All topics should have a single commit, and daily demonstration of UI has to be done.
+
+> Create a skeleton angular project.
+> Create a basic form with 2 fields & 2 buttons - Save & Say Hello.
+- until user fills both the fields, both buttons should be disabled.
+- On Save button click, the form data should be printed as a dictionary in the console.
+- On Say Hello click, a small popup should open with the text ' HEllo, {{name}}'
+```
