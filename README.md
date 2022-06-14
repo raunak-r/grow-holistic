@@ -1,4 +1,4 @@
-## Trainings
+# Grow Holistic (SOftware Trainings)
 
 Being a fresher, we come across a million question, How to deep dive into large codebases, how to start learning something. Given the amount of technologies that exist today it all may feel really overwhelming.
 
@@ -32,20 +32,55 @@ Next is software concepts.
 
 The point of this training is to prepare you for this industry. Think of this knowledge as the basic maths that is required in order to solve algebra. Try not to feel overwhelmed, but try to take it all in a good spirits, and with practice you'll start understanding how many different pieces come together to build an application.
 
-Start the next step, in the following manner.
+## Learning Trajectory
 
-Common for everyone
+| Level | Topics    |
+| :---:   | :---: |
+| Level 1 - College Graduate Level | Basics of CS - DSA, DBMS, OOPS & OS |
+| Level 2 - Fresher | Basics of SDE - Git, Inspect Element, IDEs, RestAPIs, JSON, MVC Frameworks - High Level etc. |
+| Level 3 - Software Engineer (Backend/Frontend) | Either 1 of backend or frontend |
+| Level 4 ~ 2 Year Exp Software Engineer | Devops |
+| Level 5 - Full Stack Software Engineer | Either 1 of backend or frontend which is remaining. |
+
+## Scope
+```
+None of the questions should be helped upon unless necessary. Self-learning has to be emphasized as much as possible.
+This is to train pre-final/final/graduated folks for industry.
+```
+
+## Skills to Focus On
+```
+- Students should make themselves independent.
+- The only skill that needs to be gained is "How to self-learn"
+- How to break down any new topic and understand it from beginner to expert level.
+```
+
+## How to Work
+```
+Everyone should work in their own branch by their own {name}.
+Datetime between 2 commits is the time taken.
+EOD need to see practicals & actionables. Anything which cannot be documented on git is a wasteful learning.
+```
+
+## Resources
+
+## Common for everyone
+- [Git](./topics/git.md)
 - [Tool-Belt](./tool-belt.md)
 
-Language Specific
-- [Database](./languages/database.md) (For everyone)
+## Databases
+Common for everyone
+- [Databases](./topics/databases.md)
+- [Complexity-Database-Training](./topics/databases-complexity-training.md)
 
-Backend Specific (Java preferred)
-- [Python](./languages/python.md)
-- [Java](./languages/java.md)
+## Language Specific
 
-Frontend Specific (Java preferred)
-- [Angular](./languages/angular.md)
+Backend Specific
+- [Java](./topics/java.md)
+
+Frontend Specific
+- [Angular](./topics/angular.md)
 
 For Python Devs
-- [Python & Django](./languages/PythonDjangoIn7Days.md)
+- [Python](./topics/python.md)
+- [Django](./topics/django.md)
