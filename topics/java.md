@@ -9,7 +9,7 @@ Before you start, save all these scripts under the folder name 'java-notes' on y
 Download intellij Idea Community.
 
 2. Java Basics - A few questions to refresh python memory.
-- [Question Bank Link](https://www.w3resource.com/java-exercises/ - first 5 question of each topic mentioned below
+- [Question Bank Link](https://www.w3resource.com/java-exercises/ - Question number 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 of each topic mentioned below.
 ```
 
 ## Baby Basics - Java
