@@ -136,3 +136,54 @@ A total of 14 commits must be there, in a clean and presentable manner with each
 For each topic, you've to make a Pull Request, and make a commit for each of the 5 answers solved for the same.
 Hint -> Use the branch checkout, and merge features to do this.
 ```
+
+## Springboot
+```
+- Define @entity class
+    - user table - design a table with created_time, updated_time, name, phone number, city, isDeleted
+        - @uniqueConstraint (combination of 2 cols (name & phone number) should be unique)
+
+- Write 4 api's to CRUD on a table.
+    - create - send the dto back on creation.
+    - read - get all records where isDeleted = False
+        - read/user_id - to send back only 1 single record.
+    - update - only the city column can be updated.
+        - on updation, updated_time value should change.
+    - delete - update isDelete flag to true (understand hard-delete vs soft-delete)
+    - host all 4 url's on swagger.
+    - dto, service, serviceImpl usages will be covered.
+
+- flyway integration
+    - how to add new tables?
+        - add a new table user_country - user_id (FK to user), country
+    - how to alter existing table? - rename the column city to currentCity, and add a new column - nativeCity
+        = only the currentCity can be updated in the PUT api written before.
+
+- Change the returntype of a user object in /user_id to jsonNode.
+- use ObjectMapper to do this.
+
+- Write a custom annotation on GET call (/user_id) to check if the user city is "BLR" then print logs on terminal saying - "User needs to be warned of flooding"
+
+- write custom exception handler to send this exception if user_id is not found. "User might be deleted or does not exist in db"
+
+- Integrate external service - kafka
+    - each time a user info is updated, send a record to kafka of this data type format where the values from currentCity will be used.
+        - {"userid": 1, "pastCityWas": "", newCityIs: ""}
+
+- Work on task schedulers - db_scheduler library
+    - make a simple task to print "Hi! I've started running", for 5 seconds, by putting sleep.
+    - design a reporting table - with task name, start time, end time, status, id
+    - create an enum file with statuses - STARTED, RUNNING, DONE
+    - for each run, an entry should be created in the reportingTable.
+
+- Make a mock table and insert 50000 records in that, with simple 2-3 columns.
+    - download some mock excel/csv file from internet with num of records > 40-50K.
+    - write an automated script to insert all the records in batches of 500. can be any kind of script.
+    - write a sql query "select * from table", and read it in batches of 1000. for each batch of records - print batchId.
+        - if there are 50K records, then 50K/1K = 50 batch Id's will be printed on screen.
+
+- add logging to the codebase.
+    - for each day a single file should be generated.
+    - for each log line - name of class, and function name should be printed.
+```
+
