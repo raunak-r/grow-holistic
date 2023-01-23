@@ -1,0 +1,10 @@
+<div class="menu-area" (contextmenu)="contextMenu($event)" (click)="disappearContext()">
+    <div class="customContext" *ngIf="hide" (click)="stopPropagation($event)" #menu>
+        <ul>
+            <li>Download</li>
+            <li>Delete</li>
+        </ul>
+   </div>
+
+</div>
+

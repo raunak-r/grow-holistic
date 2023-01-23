@@ -1,0 +1,15 @@
+<div id="target" class="mdl-cell mdl-cell--5-col e-card e-card-horizontal"
+style="height: 350px; margin-right: 10px; margin-left: 10px; margin-top: 10px;
+margin-bottom: 10px; padding-left: 10px;" *ngFor="let photo of photoSource">
+<div [id]="photo['Id']" class="e-checkbox-container">
+    <ejs-checkbox [id]="photo['Id']" [checked]="photo.checked" cssClass="e-small"
+    (change)="onChange($event)"></ejs-checkbox>
+    <br />
+    <img [id]="photo['Id']" src="https://ej2.syncfusion.com/angular/demos/assets/card/images/vertical_img.png" alt="Italian Trulli"/>
+    <br />
+</div>
+</div>
+<ejs-contextmenu id="contextmenu" target="#target" [items]="photoMenuItems"
+(beforeOpen)="onBeforeOpen($event)" (select)="photoMenuSelect($event)">
+</ejs-contextmenu>
+

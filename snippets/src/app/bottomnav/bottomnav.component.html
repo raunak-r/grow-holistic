@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <footer>
+    <mat-toolbar class="toolbarNav">
+      <button mat-flat-button routerLink="/contextmenu" routerLinkActive="active-link">
+        <mat-icon class="material-icons color_blue">
+          star_border</mat-icon>
+        <span>contextmenu</span>
+      </button>
+      <button mat-flat-button routerLink="/context-menu-example" routerLinkActive="active-link">
+        <mat-icon class="material-icons color_blue">favorite_border
+        </mat-icon>
+        <span>context-menu-example</span>
+      </button>
+      <button mat-flat-button routerLink="/context-menu-example" routerLinkActive="active-link">
+        <mat-icon class="material-icons color_blue">context-menu-example</mat-icon>
+        <span>context-menu-example</span>
+      </button>
+    </mat-toolbar>
+  </footer>
+</body>
+
+</html>
