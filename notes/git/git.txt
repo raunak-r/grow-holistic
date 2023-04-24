@@ -1,0 +1,46 @@
+git reset --hard
+HEAD is now at 85b6300 starting point for developers
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ git branch
+  dishantjoshi
+  joybiswal
+  master
+* master_startingpoint
+  raunak
+  sumanthkotha
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ git fetch --all
+Fetching origin
+From https://github.com/raunak-r/grow-holistic
+ * [new branch]      bharathsai   -> origin/bharathsai
+ * [new branch]      gokuljavvaji -> origin/gokuljavvaji
+ * [new branch]      sekharareddy -> origin/sekharareddy
+ * [new branch]      shivalika    -> origin/shivalika
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ git checkout origin/bharathsai
+Note: switching to 'origin/bharathsai'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 85b6300 starting point for developers
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ git checkout bharathsai
+Branch 'bharathsai' set up to track remote branch 'bharathsai' from 'origin'.
+Switched to a new branch 'bharathsai'
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ git checkout gokuljavvaji
+Branch 'gokuljavvaji' set up to track remote branch 'gokuljavvaji' from 'origin'.
+Switched to a new branch 'gokuljavvaji'
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ git checkout -b reference_raunak
+Switched to a new branch 'reference_raunak'
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ mkdir demo_django
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ mkdir django_project
+raunak@raunak-Inspiron-15-3520:/media/raunak/Data/Master/Projects/grow-holistic$ mkdir notes
