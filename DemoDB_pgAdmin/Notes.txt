@@ -1,0 +1,68 @@
+#Install the Components from the Ubuntu Repositories
+sudo apt-get update
+sudo apt-get install python3-pip python3-dev libpq-dev postgresql postgresql-contrib
+
+#Create a Database and Database User
+sudo -u postgres psql
+CREATE DATABASE myproject;
+CREATE USER myprojectuser WITH PASSWORD 'password';
+GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+\q
+
+#Install Django within a Virtual Environment (fro python3)
+sudo pip3 install virtualenv
+
+Make and move into a directory to hold your Django project:
+mkdir myproject
+cd myproject
+
+We can create a virtual environment to store our Django project’s Python requirements by typing:
+virtualenv myprojectenv
+
+we need to activate it. You can do so by typing:
+source myprojectenv/bin/activate
+
+We will also install the psycopg2 package that will allow us to use the database we configured:
+pip install django psycopg2
+
+We can now start a Django project within our myproject directory. This will create a child directory of the same name to hold the code itself:
+django-admin.py startproject myproject .
+
+Configure the Django Database Settings
+nano myproject/myproject/settings.py
+
+. . .
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+
+. . .
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+Migrate the Database and Test your Project
+cd myproject
+python manage.py makemigrations
+python manage.py migrate
+
+After creating the database structure, we can create an administrative account by typing:
+python manage.py createsuperuser
+
+You will be asked to select a username, provide an email address, and choose and confirm a password for the account.
+
+Allow external connections to the port by typing:
+sudo ufw allow 8000
+python manage.py runserver localhost:8000
+
+You should see the default index page:
+
+Append /admin to the end of the URL and you should be able to access the login screen to the admin interface:
+Enter the username and password you just created using the createsuperuser command. You will then be taken to the admin interface:

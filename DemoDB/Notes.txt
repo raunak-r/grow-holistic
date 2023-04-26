@@ -1,0 +1,24 @@
+# Create folder
+mkdir DemoDB
+
+#Creating Virtual Environment
+python -m venv virtual
+
+#Activate Virtual Environment
+Source virtual/bin/activate
+
+#install Django
+pip install django
+
+#start a project name called DemoDB
+django-admin startproject DemoDB
+
+go inside DemoDB
+cd DemoDB/
+
+#create and start new app called demowebsite
+python manage.py startapp demowebsite
+
+Now add path in urls.py file to the newly created app and add the app in settings installed apps
+
+
