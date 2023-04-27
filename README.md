@@ -1,10 +1,10 @@
 # Grow Holistic (Software Trainings)
 
 ```
-Developer Name - 
+Sekhara - 
 ```
 
-## Topic List
+## Vendor Management
 ```
 - 
 -

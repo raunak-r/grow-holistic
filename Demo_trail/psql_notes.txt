@@ -1,0 +1,57 @@
+somu@MSI-GF63-Thin-9SCXR:~$ sudo -u psql
+sudo: unknown user psql
+sudo: error initializing audit plugin sudoers_audit
+somu@MSI-GF63-Thin-9SCXR:~$ service postgresql status
+● postgresql.service - PostgreSQL RDBMS
+     Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor pr>
+     Active: active (exited) since Mon 2023-04-24 15:57:32 IST; 2 days ago
+   Main PID: 1274 (code=exited, status=0/SUCCESS)
+        CPU: 1ms
+
+Apr 24 15:57:32 MSI-GF63-Thin-9SCXR systemd[1]: Starting PostgreSQL RDBMS...
+Apr 24 15:57:32 MSI-GF63-Thin-9SCXR systemd[1]: Finished PostgreSQL RDBMS.
+
+somu@MSI-GF63-Thin-9SCXR:~$ sudo -u postgres psql
+[sudo] password for somu: 
+could not change directory to "/home/somu": Permission denied
+psql (14.7 (Ubuntu 14.7-0ubuntu0.22.04.1))
+Type "help" for help.
+
+postgres=# \conninfo
+You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".
+postgres=# \1
+invalid command \1
+Try \? for help.
+postgres=# \|
+invalid command \|
+Try \? for help.
+postgres=# \l
+                             List of databases
+   Name    |  Owner   | Encoding | Collate | Ctype |   Access privileges   
+-----------+----------+----------+---------+-------+-----------------------
+ myproject | postgres | UTF8     | en_IN   | en_IN | =Tc/postgres         +
+           |          |          |         |       | postgres=CTc/postgres+
+           |          |          |         |       | somu0506=CTc/postgres
+ postgres  | postgres | UTF8     | en_IN   | en_IN | 
+ template0 | postgres | UTF8     | en_IN   | en_IN | =c/postgres          +
+           |          |          |         |       | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_IN   | en_IN | =c/postgres          +
+           |          |          |         |       | postgres=CTc/postgres
+(4 rows)
+
+postgres=# \du
+postgres=# \dt
+       List of relations
+ Schema | Name | Type  | Owner 
+--------+------+-------+-------
+ public | Demo | table | somu
+(1 row)
+
+postgres=# 
+
+
+to change the default postgres user password
+user:~$ sudo -i -u postgres
+postgres@user:~$ psql
+
+ALTER USER postgres PASSWORD 'mynewpassword';
