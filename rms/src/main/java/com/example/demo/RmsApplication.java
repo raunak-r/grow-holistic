@@ -16,6 +16,7 @@ public class RmsApplication {
 	}
 	@GetMapping("/hello")
 	public String hello(@RequestParam(value="name",defaultValue="world") String name){
+		System.out.println("first print statement");
 		return String.format( "hello"+name);
 	}
 
