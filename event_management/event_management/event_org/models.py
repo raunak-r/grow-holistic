@@ -22,6 +22,7 @@ class event(models.Model):
     event_name=models.CharField(max_length=100,blank=False)
     event_date = models.DateTimeField(null=True,auto_now_add=True)
     event_cost = models.DecimalField(decimal_places=2,max_digits=10,null=True,blank=False)
+    customer_id=models.ForeignKey(customer,blank=False,null=True,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.event_name
