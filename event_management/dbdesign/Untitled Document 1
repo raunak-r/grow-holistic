@@ -1,0 +1,30 @@
+Table event {
+  event_id integer
+  event_name varchar
+  event_cost integer
+  event_date date
+  user_id integer //fk
+ 
+}
+
+Table user {
+  id integer [primary key]
+  username varchar
+  user_email varchar
+  phone varchar
+  
+}
+
+Table Booking {
+  Booking_id integer [primary key]
+  user_id integer
+  count integer
+  event_id integer
+  date_of_booking date
+}
+
+// Ref: event.user_id > users.id // many-to-one
+
+Ref: user.id < Booking.user_id
+
+Ref:Booking.Booking_id < event.event_id
