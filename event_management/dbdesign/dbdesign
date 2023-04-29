@@ -3,7 +3,7 @@ Table event {
   event_name varchar
   event_cost integer
   event_date date
-  user_id integer //fk
+  customer_id integer //fk
  
 }
 
