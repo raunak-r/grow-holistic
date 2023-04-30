@@ -1,0 +1,36 @@
+Table Restaurants {
+  restaurant_id integer [primary key]
+  restaurant_name varchar
+  city varchar
+}
+
+Table User {
+  user_id integer [primary key]
+  name varchar
+  email varchar
+  
+}
+
+Table item {
+  itemId integer [primary key]
+  itemname varchar
+  item_price float
+  restaurant_id integer
+}
+
+Table order {
+  orderId integer [primary key]
+  itemId integer
+  restaurant_id integer
+  user_id integer
+}
+
+
+
+Ref: "Restaurants"."restaurant_id" < "item"."restaurant_id"
+
+Ref: "User"."user_id" < "order"."user_id"
+
+Ref: "item"."itemId" < "order"."itemId"
+
+Ref: "item"."restaurant_id" < "order"."restaurant_id"
