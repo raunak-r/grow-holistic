@@ -1,9 +1,10 @@
 package com.example.demo.tables;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,5 +15,9 @@ public class items {
     private String item_name;
     private float price;
 
-    private int res_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "res_id", nullable = false)
+    private res res;
+    @OneToOne(cascade = CascadeType.ALL)
+    private orders order;
 }

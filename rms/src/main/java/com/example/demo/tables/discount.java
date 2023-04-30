@@ -1,8 +1,6 @@
 package com.example.demo.tables;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -13,6 +11,8 @@ public class discount {
     private int dis_id;
     private int dis_price;
 
-    private int item_id;
+    @OneToOne
+    @JoinColumn(name = "order_id",nullable = false)
+    private orders order;
 
 }

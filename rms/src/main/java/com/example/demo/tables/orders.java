@@ -1,8 +1,6 @@
 package com.example.demo.tables;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -11,10 +9,10 @@ import lombok.Data;
 public class orders {
     @Id
     private int order_id;
-
-    private int item_id;
-
-    private int res_id;
-
-    private int user_id;
+    @OneToOne
+    @JoinColumn(name = "item_id")
+    private items item;
+    @OneToOne
+    @JoinColumn(name = "user_id",nullable = false)
+    private users user;
 }
