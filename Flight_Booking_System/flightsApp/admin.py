@@ -3,7 +3,7 @@ from .models import user, airline, city, flight, booking
 
 # Register your models here.
 class userAdmin(admin.ModelAdmin):
-    list_display = ['uset_id','first_name','last_name','dob','passport_number','email','phone','address']
+    list_display = ['user_id','first_name','last_name','dob','passport_number','email','phone','address']
 
 class airlineAdmin(admin.ModelAdmin):
     list_display = ['Airline_id','Airline_name','email','phone']
