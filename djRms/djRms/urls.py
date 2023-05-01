@@ -20,6 +20,8 @@ from mytables import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('rests/<str:city_name>/', views.get_queryset, name='rests_by_city'),
+    path('items/', views.get_items, name='items'),
+    path('items/<str:rest_name>', views.get_itemsbyrests)
 ]
 
 

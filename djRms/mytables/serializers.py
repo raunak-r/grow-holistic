@@ -6,3 +6,8 @@ class RestSerializer(serializers.ModelSerializer):
     class Meta:
         model = rest
         fields = '__all__'
+
+class itemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = item
+        fields = '__all__'
