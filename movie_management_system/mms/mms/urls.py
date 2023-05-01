@@ -19,6 +19,12 @@ from mmsapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('users/', views.user_list),
-    path('movies/', views.movie_list)
+    path('movies/', views.movie_list),
+    path('genres/', views.genre_list),
+    path('moviesbygenre/<genre>', views.moviegenre_list),
+    path('search_movie_by_name/<partial_name>',views.moviename_list),
+    path('get_movie_by_director/<director>', views.get_movie_by_director),
+   
 ]

@@ -9,9 +9,15 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class MovieSerializer(serializers.ModelSerializer):
+    release_date = serializers.DateField(format='%Y-%m-%d')
     class Meta:
             model=Movie
             fields=['movie_id','movie_name','release_year','rating','genre_id']
+
+class MovienSerializer(serializers.ModelSerializer):
+    class Meta:
+            model=Movie
+            fields=['movie_id','movie_name']
 
 class GenreSerializer(serializers.ModelSerializer):
     class Meta:
