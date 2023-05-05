@@ -21,7 +21,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('rests/<str:city_name>/', views.get_queryset, name='rests_by_city'),
     path('items/', views.get_items, name='items'),
-    path('items/<str:rest_name>', views.get_itemsbyrests)
+    path('items/<str:rest_name>', views.get_itemsbyrests),
+    path('users/', views.get_users.as_view()),
+    path('users/create/', views.create_user.as_view(), name='create_user'),
+    path('users/<int:pk>/delete/', views.delete_user, name='delete_user'),
+    path('user/<int:pk>/update/', views.update_user, name='update_user'),
 ]
 
 

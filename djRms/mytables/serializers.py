@@ -11,3 +11,16 @@ class itemSerializer(serializers.ModelSerializer):
     class Meta:
         model = item
         fields = '__all__'
+
+class usersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = user
+        fields= '__all__'
+
+class userSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = user
+        fields= '__all__'
+
+    userName = serializers.CharField(max_length=100, required=True)
+    email = serializers.CharField(max_length=100, required=True)
