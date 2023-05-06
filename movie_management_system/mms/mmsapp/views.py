@@ -19,80 +19,118 @@ from django.http import HttpResponseBadRequest
 
 # Create your views here.
 
-@api_view(['GET', 'POST'])
-@csrf_exempt
-def user_list(request):
-    if request.method == 'GET':
-        users = User.objects.all()
-        serializer = UserSerializer(users, many=True)
-        return JsonResponse({'users': serializer.data})
+# @api_view(['GET', 'POST','PUT','PATCH','DELETE'])
+# @csrf_exempt
+# def user_list(request,user_id=None,format=None):
+#     if request.method == 'GET':
+#         if user_id is not None:
+#             #retreive only that user
+#             user_obj= User.objects.filter(user_id=user_id)
+#             serializer = UserSerializer(user_obj, many=True)
+#             return JsonResponse({'user':serializer.data})
+#         else:
+#             users = User.objects.all()
+#             serializer = UserSerializer(users, many=True)
+#             return JsonResponse({'users': serializer.data})
 
-    if request.method == 'POST':
-        try:
-            jsonData = JSONParser().parse(request)
-            serializer = UserSerializer(data=jsonData)
-            if serializer.is_valid():
-                serializer.save()
-                return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+#     elif request.method == 'POST':
+#         try:
+#             jsonData = JSONParser().parse(request)
+#             serializer = UserSerializer(data=jsonData)
+#             if serializer.is_valid():
+#                 serializer.save()
+#                 return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+#             else:
+#                 return JsonResponse(serializer.errors, safe=False)
+
+#         except json.JSONDecodeError as e:
+#             # Handle the JSONDecodeError exception
+#             return HttpResponseBadRequest('Invalid JSON payload: {}'.format(e.msg))
+#         except Exception as e:
+#             # Handle other exceptions
+#             return HttpResponseBadRequest('Error while parsing JSON payload: {}'.format(str(e)))
+#         # Return a success response
+#         # return HttpResponse('Success!')
+#     elif request.method == 'PUT':
+#         try:
+#             jsonData = JSONParser().parse(request)
+#             user = User.objects.get(user_id=user_id)
+#             serializer = UserSerializer(user, data=jsonData)
+#             if serializer.is_valid():
+#                 serializer.save()
+#                 return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+#             else:
+#                 return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#         except json.JSONDecodeError as e:
+#             return HttpResponseBadRequest('Invalid JSON payload: {}'.format(e.msg))
+#         except Exception as e:
+#             return HttpResponseBadRequest('Error while parsing JSON payload: {}'.format(str(e)))
+#     elif request.method == 'PATCH':
+#         try:
+#             jsonData = JSONParser().parse(request)
+#             user = User.objects.get(user_id=user_id)
+#             serializer = UserSerializer(user, data=jsonData,partial=True)
+#             if serializer.is_valid():
+#                 serializer.save()
+#                 return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+#             else:
+#                 return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#         except json.JSONDecodeError as e:
+#             return HttpResponseBadRequest('Invalid JSON payload: {}'.format(e.msg))
+#         except Exception as e:
+#             return HttpResponseBadRequest('Error while parsing JSON payload: {}'.format(str(e)))
+#     elif request.method == 'DELETE':
+#         user = User.objects.get(user_id=user_id)
+#         user.delete()
+#         return JsonResponse({'message': 'User deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+
+class userlist(APIView):
+    def get(self,request,user_id=None,format=None):
+        if user_id is not None:
+            #retreive only that user
+            user_obj= User.objects.filter(user_id=user_id)
+            if user_obj.exists():
+                serializer = UserSerializer(user_obj, many=True)
+                return JsonResponse({'user':serializer.data})
             else:
-                return JsonResponse(serializer.errors, safe=False)
+                return JsonResponse(status=status.HTTP_404_NOT_FOUND)
+        else:
+            users = User.objects.all()
+            serializer = UserSerializer(users, many=True)
+            return JsonResponse({'users': serializer.data})         
+    def post(self,request,format=None):
+        jsonData = JSONParser().parse(request)
+        serializer = UserSerializer(data=jsonData)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return JsonResponse(serializer.errors, safe=False)
 
-        except json.JSONDecodeError as e:
-            # Handle the JSONDecodeError exception
-            return HttpResponseBadRequest('Invalid JSON payload: {}'.format(e.msg))
-        except Exception as e:
-            # Handle other exceptions
-            return HttpResponseBadRequest('Error while parsing JSON payload: {}'.format(str(e)))
-        # Return a success response
-        return HttpResponse('Success!')
-
-
-@api_view(['PUT'])
-@csrf_exempt
-def update_user(request, user_id):
-    try:
+    def put(self,request,user_id=None,format=None):
+        jsonData = JSONParser().parse(request)
         user = User.objects.get(user_id=user_id)
-    except User.DoesNotExist:
-        return JsonResponse({'message': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)
-    if request.method == 'PUT':
-        try:
+        serializer = UserSerializer(user, data=jsonData)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self,request,user_id=None,format=None):
             jsonData = JSONParser().parse(request)
-            serializer = UserSerializer(user, data=jsonData)
+            user = User.objects.get(user_id=user_id)
+            serializer = UserSerializer(user, data=jsonData,partial=True)
             if serializer.is_valid():
                 serializer.save()
                 return JsonResponse(serializer.data, status=status.HTTP_200_OK)
             else:
-                return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except json.JSONDecodeError as e:
-            return HttpResponseBadRequest('Invalid JSON payload: {}'.format(e.msg))
-        except Exception as e:
-            return HttpResponseBadRequest('Error while parsing JSON payload: {}'.format(str(e)))
-
-
-# @api_view(['DELETE'])
-# @csrf_exempt
-# def delete_user(request, user_id):
-#     try:
-#         user = User.objects.get(user_id=user_id)
-#     except User.DoesNotExist:
-#         return JsonResponse({'message': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)
-#
-#     if request.method == 'DELETE':
-#         user.delete()
-#         return JsonResponse({'message': 'User deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
-
-class delete_user(APIView):
-    def get_object(self, user_id):
-        try:
-            return User.objects.get(user_id=user_id)
-        except User.DoesNotExist:
-            return JsonResponse({'message': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)
-
-    def delete(self, request, user_id, format=None):
-        user = self.get_object(user_id)
+                return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
+    def delete(self,request,user_id=None,format=None):
+        user = User.objects.get(user_id=user_id)
         user.delete()
         return JsonResponse({'message': 'User deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
-
+                   
 
 @api_view(['GET'])
 def movie_list(request):
