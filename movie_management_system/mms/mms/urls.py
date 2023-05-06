@@ -26,5 +26,6 @@ urlpatterns = [
     path('moviesbygenre/<genre>', views.moviegenre_list),
     path('search_movie_by_name/<partial_name>',views.moviename_list),
     path('get_movie_by_director/<director>', views.get_movie_by_director),
-   
+    path('update_user/<user_id>', views.update_user),
+    path('delete_user/<int:user_id>',views.delete_user.as_view())
 ]
