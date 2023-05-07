@@ -40,8 +40,8 @@ class flight(models.Model):
     airline_name = models.ForeignKey(airline, on_delete=models.CASCADE)
     # flight_name = models.CharField(max_length=50,null=False,blank=False, default='')
     arr_city = models.ForeignKey(city, on_delete=models.CASCADE, related_name='arrivals')
-    des_city = models.ForeignKey(city, on_delete=models.CASCADE,
-                                 related_name='departures')  # by mistake i created departure city as des_city instead of dep_city, so i kept like that only
+    des_city = models.ForeignKey(city, on_delete=models.CASCADE, related_name='departures')
+    # by mistake, I created departure city as des_city instead of dep_city, so I kept like that only
     date = models.DateField(default=2023 - 5 - 13, blank=False)
     number_of_seats = models.IntegerField(null=True, blank=False)
     price = models.DecimalField(decimal_places=2, max_digits=10, null=True, blank=False)

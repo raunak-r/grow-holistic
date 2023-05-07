@@ -20,18 +20,17 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from flightsApp import views
 
-urlpatterns = [
+urlpatterns = format_suffix_patterns([
     path('admin/', admin.site.urls),
-    path('user/', views.user_list),
-    path('airline/', views.AirlineList.as_view()),
-    path('city/', views.city_list),
-    path('flight/', views.flight_list),
-    path('booking/', views.booking_list),
-    path('airline/<int:airline_id>/', views.AirlineList.as_view()),
-    path('flight/<str:name>/', views.airline_flight_list),
-    path('flight/<str:arr_city>/<str:dep_city>/', views.target_flight_list),
-    # arr_city = arrival_city,  dep_city = departure_city
-    path('booking/<int:id>/', views.user_booking_list),
-]
-
-urlpatterns = format_suffix_patterns(urlpatterns)
+    path('users/', views.user_list, name='user-list'),
+    path('users/<int:pk>/', views.user_detail, name='user-detail'),
+    path('airlines/', views.AirlineList.as_view(), name='airline-list'),
+    path('airlines/<int:pk>/', views.AirlineDetail.as_view(), name='airline-detail'),
+    path('cities/', views.city_list, name='city-list'),
+    path('cities/<int:pk>/', views.city_detail, name='city-detail'),
+    path('flights/', views.flight_list, name='flight-list'),
+    path('flights/<int:pk>/', views.flight_detail, name='flights-detail'),
+    path('flights/<str:arr_city>/<str:dep_city>', views.flights_between_cities, name='flights-between-cities'),
+    path('bookings/', views.booking_list, name='booking-list'),
+    path('bookings/<int:pk>/', views.booking_detail, name='booking-detail'),
+])

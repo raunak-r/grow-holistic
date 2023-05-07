@@ -24,6 +24,13 @@ def user_list(request, format=None):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
+@api_view(['Get'])
+def user_detail(request, pk, format=None):
+    User = user.objects.filter(user_id=pk)
+    serializer = bookingSerializer(User, many=True)
+    return Response(serializer.data)
+
+
 # @api_view(['GET', 'POST'])
 # def airline_list(request, format=None):
 #     if request.method == 'GET':
@@ -37,11 +44,11 @@ def user_list(request, format=None):
 #             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 # @api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
-# def airline_list(request, airline_id=None, format=None):
+# def airline_list(request, Airline_id=None, format=None):
 #     if request.method == 'GET':
-#         if airline_id is not None:
+#         if Airline_id is not None:
 #             # Retrieve a specific airline by ID
-#             airline_obj = airline.objects.filter(Airline_id=airline_id)
+#             airline_obj = airline.objects.filter(Airline_id=Airline_id)
 #             serializer = airlineSerializer(airline_obj, many=True)
 #             return Response(serializer.data)
 #         else:
@@ -59,7 +66,7 @@ def user_list(request, format=None):
 #             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 #
 #     elif request.method in ['PUT', 'PATCH', 'DELETE']:
-#         airline_obj = airline.objects.get(Airline_id=airline_id)
+#         airline_obj = airline.objects.get(Airline_id=Airline_id)
 #         if request.method == 'PUT':
 #             serializer = airlineSerializer(airline_obj, data=request.data)
 #             if serializer.is_valid():
@@ -81,16 +88,31 @@ def user_list(request, format=None):
 #
 #     elif request.method == 'DELETE':
 #         try:
-#             airline_obj = airline.objects.get(Airline_id=airline_id)
+#             airline_obj = airline.objects.get(Airline_id=Airline_id)
 #         except airline.DoesNotExist:
 #             return Response(status=status.HTTP_404_NOT_FOUND)
 #         airline_obj.delete()
 #         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
 class AirlineList(APIView):
-    def get(self, request, airline_id=None, format=None):
-        if airline_id is not None:
-            airline_obj = airline.objects.filter(Airline_id=airline_id)
+    def get(self, request, format=None):
+        airlines = airline.objects.all()
+        serializer = airlineSerializer(airlines, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = airlineSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class AirlineDetail(APIView):
+    def get(self, request, pk=None, format=None):
+        if pk is not None:
+            airline_obj = airline.objects.filter(Airline_id=pk)
             if airline_obj.exists():
                 serializer = airlineSerializer(airline_obj, many=True)
                 return Response(serializer.data)
@@ -101,16 +123,8 @@ class AirlineList(APIView):
             serializer = airlineSerializer(airlines, many=True)
             return Response(serializer.data)
 
-    def post(self, request, format=None):
-        serializer = airlineSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def put(self, request, airline_id, format=None):
-        airline_obj = airline.objects.get(Airline_id=airline_id)
+    def put(self, request, pk, format=None):
+        airline_obj = airline.objects.get(Airline_id=pk)
         serializer = airlineSerializer(airline_obj, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -118,8 +132,8 @@ class AirlineList(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def patch(self, request, airline_id, format=None):
-        airline_obj = airline.objects.get(Airline_id=airline_id)
+    def patch(self, request, pk, format=None):
+        airline_obj = airline.objects.get(Airline_id=pk)
         serializer = airlineSerializer(
             airline_obj,
             data=request.data,
@@ -131,10 +145,11 @@ class AirlineList(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, airline_id, format=None):
-        airline_obj = airline.objects.get(Airline_id=airline_id)
+    def delete(self, request, pk, format=None):
+        airline_obj = airline.objects.get(Airline_id=pk)
         airline_obj.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 @api_view(['GET', 'POST'])
 def city_list(request, format=None):
@@ -147,6 +162,13 @@ def city_list(request, format=None):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+def city_detail(request, pk, format=None):
+    City = city.objects.filter(city_id=pk)
+    serializer = citySerializer(City, many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET', 'POST'])
@@ -162,8 +184,15 @@ def flight_list(request, format=None):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
+@api_view(['GET', 'POST'])
+def flight_detail(request, pk, format=None):
+    Flight = flight.objects.filter(filght_id=pk)
+    serializer = flightSerializer(Flight, many=True)
+    return Response(serializer.data)
+
+
 @api_view(['GET'])
-def target_flight_list(request, arr_city, dep_city, format=None):
+def flights_between_cities(request, arr_city, dep_city, format=None):
     arrival = city.objects.get(city_name=arr_city)
     departure = city.objects.get(city_name=dep_city)
     Flight = flight.objects.filter(arr_city=arrival.city_id, des_city=departure.city_id)
@@ -200,7 +229,7 @@ def booking_list(request, format=None):
 
 
 @api_view(['GET'])
-def user_booking_list(request, user_id, format=None):
+def booking_detail(request, pk, format=None):
     Booking = booking.objects.filter(user_id=user_id)
     serializer = bookingSerializer(Booking, many=True)
     return Response(serializer.data)
