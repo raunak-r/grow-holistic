@@ -2,8 +2,10 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_http_methods
 from rest_framework import generics, status
+from rest_framework.generics import UpdateAPIView
+
 from .models import rest, user, item, discount, order
-from .serializers import RestSerializer, itemSerializer, userSerializer, usersSerializer
+from .serializers import RestSerializer, itemSerializer, userSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
@@ -70,24 +72,43 @@ def delete_user(request, pk):
     return HttpResponse("User deleted successfully")
 
 
-@require_http_methods(["PUT"])
-def update_user(request, pk):
-    User = get_object_or_404(user, pk=pk)
-    username = request.POST.get('userName')
-    email = request.POST.get('email')
+# @require_http_methods(["PUT"])
+# def update_user(request, pk):
+#     User = get_object_or_404(user, pk=pk)
+#     username = request.POST.get('userName')
+#     email = request.POST.get('email')
+#
+#     if username is None and email is None:
+#         return JsonResponse({'error': 'At least one field is required.'}, status=400)
+#
+#     if username is not None:
+#         User.userName = username
+#
+#     if email is not None:
+#         User.email = email
+#
+#     try:
+#         User.full_clean()
+#         User.save()
+#         return HttpResponse("User updated successfully")
+#     except ValidationError as e:
+#         return JsonResponse({'error': e.message}, status=400)
 
-    if username is None and email is None:
-        return JsonResponse({'error': 'At least one field is required.'}, status=400)
+class update_user(UpdateAPIView):
+    serializer_class = userSerializer
 
-    if username is not None:
-        User.userName = username
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        obj = get_object_or_404(user, pk=pk)
+        return obj
 
-    if email is not None:
-        User.email = email
+    def put(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
 
-    try:
-        User.full_clean()
-        User.save()
-        return HttpResponse("User updated successfully")
-    except ValidationError as e:
-        return JsonResponse({'error': e.message}, status=400)
+    def perform_update(self, serializer):
+        serializer.save()

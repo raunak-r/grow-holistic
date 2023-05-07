@@ -22,10 +22,10 @@ urlpatterns = [
     path('rests/<str:city_name>/', views.get_queryset, name='rests_by_city'),
     path('items/', views.get_items, name='items'),
     path('items/<str:rest_name>', views.get_itemsbyrests),
-    path('users/', views.get_users.as_view()),
+    path('users/', views.get_users.as_view(), name='users'),
     path('users/create/', views.create_user.as_view(), name='create_user'),
     path('users/<int:pk>/delete/', views.delete_user, name='delete_user'),
-    path('user/<int:pk>/update/', views.update_user, name='update_user'),
+    path('user/<int:pk>/update/', views.update_user.as_view(), name='update_user'),
 ]
 
 

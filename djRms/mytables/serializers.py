@@ -12,10 +12,6 @@ class itemSerializer(serializers.ModelSerializer):
         model = item
         fields = '__all__'
 
-class usersSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = user
-        fields= '__all__'
 
 class userSerializer(serializers.ModelSerializer):
     class Meta:
