@@ -84,7 +84,22 @@ from django.http import HttpResponseBadRequest
 #         user.delete()
 #         return JsonResponse({'message': 'User deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
 
-class userlist(APIView):
+
+class UserList(APIView):
+    def get(self, request, format=None):
+        airlines = User.objects.all()
+        serializer = UserSerializer(airlines, many=True)
+        return Response(serializer.data)
+            
+    def post(self,request,format=None):
+        jsonData = JSONParser().parse(request)
+        serializer = UserSerializer(data=jsonData)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, safe=False)
+class UserDetails(APIView):
     def get(self,request,user_id=None,format=None):
         if user_id is not None:
             #retreive only that user
@@ -97,16 +112,7 @@ class userlist(APIView):
         else:
             users = User.objects.all()
             serializer = UserSerializer(users, many=True)
-            return JsonResponse({'users': serializer.data})         
-    def post(self,request,format=None):
-        jsonData = JSONParser().parse(request)
-        serializer = UserSerializer(data=jsonData)
-        if serializer.is_valid():
-            serializer.save()
-            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return JsonResponse(serializer.errors, safe=False)
-
+            return JsonResponse({'users': serializer.data}) 
     def put(self,request,user_id=None,format=None):
         jsonData = JSONParser().parse(request)
         user = User.objects.get(user_id=user_id)
