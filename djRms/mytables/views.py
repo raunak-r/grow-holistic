@@ -1,6 +1,5 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
-from django.views.decorators.http import require_http_methods
 from rest_framework import generics, status
 from rest_framework.generics import UpdateAPIView
 
@@ -8,8 +7,7 @@ from .models import rest, user, item, discount, order
 from .serializers import RestSerializer, itemSerializer, userSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from django.views.decorators.csrf import csrf_exempt
-from django.core.exceptions import ValidationError
+
 
 
 # Create your views here.
@@ -65,12 +63,11 @@ class get_users(generics.ListAPIView):
 class create_user(generics.CreateAPIView):
     serializer_class = userSerializer
 
-
+@api_view(['DELETE'])
 def delete_user(request, pk):
     User = get_object_or_404(user, pk=pk)
     User.delete()
-    return HttpResponse("User deleted successfully")
-
+    return Response(status=status.HTTP_204_NO_CONTENT)
 
 # @require_http_methods(["PUT"])
 # def update_user(request, pk):
