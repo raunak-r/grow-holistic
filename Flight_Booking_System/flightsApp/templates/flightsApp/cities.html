@@ -1,0 +1,11 @@
+{% extends "flightsApp/base.html" %}
+{% block content %}
+    {% for city in cities %}
+    <br>
+    <div>
+        <span>City Id: {{ city.city_id }}</span><br>
+        <span>City Code: {{ city.city_code }}</span><br>
+        <span>City Name: {{ city.city_name }}</span>
+    </div>
+    {% endfor %}
+{% endblock content %}

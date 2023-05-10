@@ -22,15 +22,22 @@ from flightsApp import views
 
 urlpatterns = format_suffix_patterns([
     path('admin/', admin.site.urls),
+    path('', views.home_page, name='home_page'),
+
     path('users/', views.user_list, name='user-list'),
     path('users/<int:pk>/', views.user_detail, name='user-detail'),
+
     path('airlines/', views.AirlineList.as_view(), name='airline-list'),
     path('airlines/<int:pk>/', views.AirlineDetail.as_view(), name='airline-detail'),
+
     path('cities/', views.city_list, name='city-list'),
     path('cities/<int:pk>/', views.city_detail, name='city-detail'),
+
     path('flights/', views.flight_list, name='flight-list'),
     path('flights/<int:pk>/', views.flight_detail, name='flights-detail'),
-    path('flights/<str:arr_city>/<str:dep_city>', views.flights_between_cities, name='flights-between-cities'),
+    path('flights/<str:arr_city>/<str:dep_city>/', views.flights_between_cities, name='flights-between-cities'),
+    path('fights/<str:arr_city>/<str:dep_city>/', views.flights_between_cities, name='flights-between-cities'),
+
     path('bookings/', views.booking_list, name='booking-list'),
     path('bookings/<int:pk>/', views.booking_detail, name='booking-detail'),
 ])

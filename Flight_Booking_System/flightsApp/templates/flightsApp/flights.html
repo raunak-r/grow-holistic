@@ -1,0 +1,15 @@
+{% extends "flightsApp/base.html" %}
+{% block content %}
+    {% for flight in flights %}
+<br>
+    <div>
+        <span>Flight Id: {{ flight.filght_id }}</span><br>
+        <span>Airline Id: {{ flight.airline_name }}</span><br>
+        <span>Arrival City Id: {{ flight.arr_city }}</span><br>
+        <span>Departure City Id: {{ flight.des_city }}</span><br>
+        <span>Date: {{ flight.date }}</span><br>
+        <span>No. of Seats: {{ flight.number_of_seats }}</span><br>
+        <span>Price: ₹ {{ flight.price }}</span><br>
+    </div>
+    {% endfor %}
+{% endblock content %}

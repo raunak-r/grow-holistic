@@ -1,0 +1,13 @@
+{% extends "flightsApp/base.html" %}
+{% block content %}
+    {% for booking in bookings %}
+<br>
+    <div>
+        <span>Booking Id: {{ booking.booking_id }}</span><br>
+        <span>Flight Id: {{ booking.flight_id }}</span><br>
+        <span>User Id: {{ booking.user_id }}</span><br>
+        <span>Order Date : {{ booking.order_date }}</span><br>
+        <span>Total Cost: {{ booking.total_cost }}</span><br>
+    </div>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,97 @@
+.home-page{
+    width: 80vw;
+    min-height: 100vh;
+    /* border: solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.home-page h1{
+    margin: 30px;
+    font-size: 50px;
+}
+.home-list {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+.home-list a{
+    margin: 0 5px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: medium;
+    background-image: linear-gradient(to right, #1369A0 0%, #01e5da 51%, #1369A0  100%);    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    display: block;
+}
+.home-list a:hover{
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+.flight_search{
+    margin-top: 100px;
+    width: 70%;
+    min-width: 400px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgb(211, 211, 211);
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    
+}
+.flight_search form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: solid; */
+}
+.form-inputs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70%;
+
+}
+.form-inputs input{
+    width: 35%;
+    height: 60%;
+    padding-left: 20px;
+    margin: 0 10px;
+    font-size: 50px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    border-style: none;
+}
+.form-inputs input:nth-last-child(1){
+    width: 20%;
+    font-size: 25px;
+    padding-left: 0px;
+}
+.form-submit-btm{
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.form-submit-btm button{
+    height: 100%;
+    width: 150px;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
+}

@@ -1,0 +1,25 @@
+{% extends "flightsApp/base.html" %}
+{% block content %}
+    <div class="home-page">
+        <h1>Home Page</h1>
+        <div class="home-list">
+            <a  href="{% url 'user-list' %}">Users</a>
+            <a  href="{% url 'airline-list' %}">Airlines</a>
+            <a  href="{% url 'city-list' %}">Cities</a>
+            <a  href="{% url 'flight-list' %}">Flights</a>
+            <a  href="{% url 'booking-list' %}">Bookings</a>
+        </div>
+        <div class="flight_search">
+            <form action="users/" onsubmit="get">
+                <div class="form-inputs">
+                    <input type="text" placeholder="From">
+                    <input type="text" placeholder="To">
+                    <input type="date" >
+                </div>
+                <div class="form-submit-btm">
+                    <button type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

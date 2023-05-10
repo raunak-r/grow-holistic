@@ -4,3 +4,25 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+
+
+##############################
+## ML-AI
+##############################
+.ipynb_checkpoints
+datasets/
+#*.csv
+reports/
+
+##############################
+## Python & Django
+##############################
+*.pyc
+venv_*/
+venv/
+venv_*/
+venv_wp/
+venv*/
+staticfiles/
+temp_media/

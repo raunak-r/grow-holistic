@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'flightsApp/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'flightsApp/home.css' %}">
+
+    {% if title %}
+        <title>Flight Booking System - {{ title }}</title>
+    {% else %}
+        <title>Flight Booking System</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="container">
+                <a class="navbar-home" href="{% url 'home_page' %}"><h1>Flight Booking System</h1></a>
+                <div class="navbar-menu">
+                  <a  href="{% url 'home_page' %}">Home</a>
+                  <a  href="{% url 'home_page' %}">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

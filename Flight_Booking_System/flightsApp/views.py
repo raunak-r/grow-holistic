@@ -2,12 +2,17 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.shortcuts import render
 
 from .models import user, airline, city, flight, booking
 from .serializers import userSerializer, airlineSerializer, citySerializer, flightSerializer, bookingSerializer
 
 
 # Create your views here.
+def home_page(request, format=None):
+    return render(request, 'flightsApp/home.html')
+
+
 @api_view(['GET', 'POST'])
 def user_list(request, format=None):
     # get all the data
@@ -16,7 +21,11 @@ def user_list(request, format=None):
     if request.method == 'GET':
         User = user.objects.all()
         serializer = userSerializer(User, many=True)
-        return Response(serializer.data)
+        # return Response(serializer.data)
+        context = {
+            'users': serializer.data
+        }
+        return render(request, 'flightsApp/users.html', context)
     if request.method == 'POST':
         serializer = userSerializer(data=request.data)
         if serializer.is_valid():
@@ -98,7 +107,11 @@ class AirlineList(APIView):
     def get(self, request, format=None):
         airlines = airline.objects.all()
         serializer = airlineSerializer(airlines, many=True)
-        return Response(serializer.data)
+        # return Response(serializer.data)
+        context = {
+            'airlines': serializer.data
+        }
+        return render(request, 'flightsApp/airlines.html', context)
 
     def post(self, request, format=None):
         serializer = airlineSerializer(data=request.data)
@@ -156,7 +169,11 @@ def city_list(request, format=None):
     if request.method == 'GET':
         City = city.objects.all()
         serializer = citySerializer(City, many=True)
-        return Response(serializer.data)
+        # return Response(serializer.data)
+        context = {
+            'cities': serializer.data
+        }
+        return render(request, 'flightsApp/cities.html', context)
     if request.method == 'POST':
         serializer = citySerializer(data=request.data)
         if serializer.is_valid():
@@ -176,7 +193,11 @@ def flight_list(request, format=None):
     if request.method == 'GET':
         Flight = flight.objects.all()
         serializer = flightSerializer(Flight, many=True)
-        return Response(serializer.data)
+        # return Response(serializer.data)
+        context = {
+            'flights': serializer.data
+        }
+        return render(request, 'flightsApp/flights.html', context)
     if request.method == 'POST':
         serializer = flightSerializer(data=request.data)
         if serializer.is_valid():
@@ -201,18 +222,18 @@ def flights_between_cities(request, arr_city, dep_city, format=None):
     return Response(serializer.data)
 
 
-@api_view(['GET', 'POST'])
-def airline_flight_list(request, name, format=None):
-    if request.method == 'GET':
-        find_airline = airline.objects.get(Airline_name=name)
-        Flight = flight.objects.filter(airline_name=find_airline.Airline_id)
-        serializer = flightSerializer(Flight, many=True)
-        return Response(serializer.data)
-    if request.method == 'POST':
-        serializer = flightSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+# @api_view(['GET', 'POST'])
+# def airline_flight_list(request, name, format=None):
+#     if request.method == 'GET':
+#         find_airline = airline.objects.get(Airline_name=name)
+#         Flight = flight.objects.filter(airline_name=find_airline.Airline_id)
+#         serializer = flightSerializer(Flight, many=True)
+#         return Response(serializer.data)
+#     if request.method == 'POST':
+#         serializer = flightSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET', 'POST'])
@@ -220,7 +241,11 @@ def booking_list(request, format=None):
     if request.method == 'GET':
         Booking = booking.objects.all()
         serializer = bookingSerializer(Booking, many=True)
-        return Response(serializer.data)
+        # return Response(serializer.data)
+        context = {
+            'bookings': serializer.data
+        }
+        return render(request, 'flightsApp/bookings.html', context)
     if request.method == 'POST':
         serializer = bookingSerializer(data=request.data)
         if serializer.is_valid():
@@ -230,6 +255,6 @@ def booking_list(request, format=None):
 
 @api_view(['GET'])
 def booking_detail(request, pk, format=None):
-    Booking = booking.objects.filter(user_id=user_id)
+    Booking = booking.objects.filter(user_id=pk)
     serializer = bookingSerializer(Booking, many=True)
     return Response(serializer.data)

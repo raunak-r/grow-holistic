@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+nav {
+    width: 100vw;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    box-shadow: 0px 0 5px rgb(189, 189, 189);
+    z-index: 1;
+}
+a{
+    text-decoration: none;
+}
+a:visited{
+    text-decoration: none;
+    color: black;
+}
+main{
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+nav .container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+.navbar-home h1{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    background: -webkit-linear-gradient(left, #1369A0, #01E596);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.navbar-menu{
+    width: auto;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar-menu a{
+    font-family: 'Poppins', sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    background-image: linear-gradient(to right, #1369A0 0%, #01e5da 51%, #1369A0  100%);
+    margin: 0 5px;
+    padding: 10px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+}
+.navbar-menu a:hover{
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
