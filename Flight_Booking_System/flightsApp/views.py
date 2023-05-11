@@ -1,8 +1,8 @@
+from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.shortcuts import render
 
 from .models import user, airline, city, flight, booking
 from .serializers import userSerializer, airlineSerializer, citySerializer, flightSerializer, bookingSerializer
@@ -10,7 +10,13 @@ from .serializers import userSerializer, airlineSerializer, citySerializer, flig
 
 # Create your views here.
 def home_page(request, format=None):
-    return render(request, 'flightsApp/home.html')
+    cities = city.objects.all()
+    serializer = citySerializer(cities, many=True)
+    # return Response(serializer.data)
+    context = {
+        'cities': serializer.data
+    }
+    return render(request, 'flightsApp/home.html', context)
 
 
 @api_view(['GET', 'POST'])
@@ -220,6 +226,33 @@ def flights_between_cities(request, arr_city, dep_city, format=None):
     # By mistake, I created departure city as des_city, instead of dep_city, so I kept like that only
     serializer = flightSerializer(Flight, many=True)
     return Response(serializer.data)
+
+
+def flights_on_date(request, format=None):
+    try:
+        arr_city = request.POST['arr_city']
+        des_city = request.POST['des_city']
+        date = request.POST['date']
+    except ValueError:
+        return Response({'error': 'Please Retry or try again later'})
+
+    arr_city = city.objects.get(city_name=arr_city)
+    des_city = city.objects.get(city_name=des_city)
+
+    flights = flight.objects.filter(
+        arr_city=arr_city.city_id,
+        des_city=des_city.city_id,
+        date=date,
+    )
+    if not flights:
+        return render(request, 'flightsApp/flights.html', {'flightsNotFound': 'true'})
+
+    serializer = flightSerializer(flights, many=True)
+    # return Response(serializer.data)
+    context = {
+        'flights': serializer.data
+    }
+    return render(request, 'flightsApp/flights.html', context)
 
 
 # @api_view(['GET', 'POST'])

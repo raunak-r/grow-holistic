@@ -1,8 +1,12 @@
 {% extends "flightsApp/base.html" %}
 {% block content %}
+    {% if flightsNotFound %}
+        <h1>Sorry, we're flying high right now! Check back soon for more availability.</h1>
+        <a href="{% url 'home_page' %}">Go Home</a>
+    {% endif %}
     {% for flight in flights %}
-<br>
     <div>
+        <h1>Take your pick from these flights!</h1><br>
         <span>Flight Id: {{ flight.filght_id }}</span><br>
         <span>Airline Id: {{ flight.airline_name }}</span><br>
         <span>Arrival City Id: {{ flight.arr_city }}</span><br>

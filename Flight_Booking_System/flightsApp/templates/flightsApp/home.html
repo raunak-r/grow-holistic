@@ -1,25 +1,38 @@
 {% extends "flightsApp/base.html" %}
 {% block content %}
-    <div class="home-page">
-        <h1>Home Page</h1>
-        <div class="home-list">
-            <a  href="{% url 'user-list' %}">Users</a>
-            <a  href="{% url 'airline-list' %}">Airlines</a>
-            <a  href="{% url 'city-list' %}">Cities</a>
-            <a  href="{% url 'flight-list' %}">Flights</a>
-            <a  href="{% url 'booking-list' %}">Bookings</a>
-        </div>
-        <div class="flight_search">
-            <form action="users/" onsubmit="get">
-                <div class="form-inputs">
-                    <input type="text" placeholder="From">
-                    <input type="text" placeholder="To">
-                    <input type="date" >
-                </div>
-                <div class="form-submit-btm">
-                    <button type="submit">Search</button>
-                </div>
-            </form>
-        </div>
+<div class="home-page">
+    <h1>Home Page</h1>
+    <div class="home-list">
+        <a href="{% url 'user-list' %}">Users</a>
+        <a href="{% url 'airline-list' %}">Airlines</a>
+        <a href="{% url 'city-list' %}">Cities</a>
+        <a href="{% url 'flight-list' %}">Flights</a>
+        <a href="{% url 'booking-list' %}">Bookings</a>
     </div>
+    <div class="flight_search">
+        <form action="flights/results/" method="post">
+            <!--                Here I am using POST method, so that sending data won't show-up in the Url-->
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <!--            This is used to add a CSRF token to a form. CSRF stands for Cross-Site Request Forgery, and it is a type of attack that can be used to trick a user into performing actions on a website that they did not intend to perform.-->
+            <div class="form-inputs">
+                <input type="text" list="arr_city" name="arr_city" required placeholder="From">
+                <datalist id="arr_city" class="select-city">
+                    {% for city in cities %}
+                    <option value="{{ city.city_name }}">
+                        {% endfor %}
+                </datalist>
+                <input type="text" list="arr_city" name="des_city" required placeholder="To">
+                <datalist id="dep_city" class="select-city">
+                    {% for city in cities %}
+                    <option value="{{ city.city_name }}">
+                        {% endfor %}
+                </datalist>
+                <input type="date" id="journey-date" name="date" required>
+            </div>
+            <div class="form-submit-btm">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock content %}

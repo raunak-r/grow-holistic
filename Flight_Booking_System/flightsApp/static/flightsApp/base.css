@@ -16,6 +16,7 @@ nav {
     height: 50px;
     position: fixed;
     top: 0;
+    background-color: white;
     box-shadow: 0px 0 5px rgb(189, 189, 189);
     z-index: 1;
 }
@@ -49,6 +50,7 @@ nav .container{
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
     background: -webkit-linear-gradient(left, #1369A0, #01E596);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -71,7 +73,7 @@ nav .container{
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
-    color: white;            
+    color: white;
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
     display: block;

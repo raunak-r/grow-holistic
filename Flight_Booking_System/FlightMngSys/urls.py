@@ -20,6 +20,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from flightsApp import views
 
+
 urlpatterns = format_suffix_patterns([
     path('admin/', admin.site.urls),
     path('', views.home_page, name='home_page'),
@@ -36,7 +37,7 @@ urlpatterns = format_suffix_patterns([
     path('flights/', views.flight_list, name='flight-list'),
     path('flights/<int:pk>/', views.flight_detail, name='flights-detail'),
     path('flights/<str:arr_city>/<str:dep_city>/', views.flights_between_cities, name='flights-between-cities'),
-    path('fights/<str:arr_city>/<str:dep_city>/', views.flights_between_cities, name='flights-between-cities'),
+    path('flights/results/', views.flights_on_date, name='flights-on-date'),
 
     path('bookings/', views.booking_list, name='booking-list'),
     path('bookings/<int:pk>/', views.booking_detail, name='booking-detail'),
