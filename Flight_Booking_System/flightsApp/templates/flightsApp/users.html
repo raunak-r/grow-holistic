@@ -1,15 +1,16 @@
 {% extends "flightsApp/base.html" %}
 {% block content %}
+<div class="users-container">
     {% for user in users %}
-    <br>
-    <div>
-        <span>User Id: {{ user.user_id }}</span><br>
-        <span>{{ user.first_name }}  {{ user.last_name }}</span><br>
-        <span>D.O.B : {{ user.dob }}</span><br>
-        <span>PASSPORT NUMBER : {{ user.passport_number }}</span><br>
-        <span>Email Id: {{ user.email }}</span><br>
-        <span>Phone No: {{ user.phone }}</span><br>
-        <span>Address: {{ user.address }}</span><br>
+    <div class="user-div">
+        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+        <span><h4>User Id: </h4>{{ user.user_id }}</span>
+        <span><h4>D.O.B : </h4>{{ user.dob }}</span>
+        <span><h4>PASSPORT NUMBER : </h4>{{ user.passport_number }}</span>
+        <span><h4>Email Id: </h4>{{ user.email }}</span>
+        <span><h4>Phone No: </h4>{{ user.phone }}</span>
+        <span><h4>Address: </h4></h4>{{ user.address }}</span>
     </div>
     {% endfor %}
+</div>
 {% endblock content %}

@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from django.core.exceptions import ObjectDoesNotExist
 from .models import user, airline, city, flight, booking
 from .serializers import userSerializer, airlineSerializer, citySerializer, flightSerializer, bookingSerializer
 
@@ -236,8 +237,11 @@ def flights_on_date(request, format=None):
     except ValueError:
         return Response({'error': 'Please Retry or try again later'})
 
-    arr_city = city.objects.get(city_name=arr_city)
-    des_city = city.objects.get(city_name=des_city)
+    try:
+        arr_city = city.objects.get(city_name=arr_city)
+        des_city = city.objects.get(city_name=des_city)
+    except ObjectDoesNotExist:
+        return render(request, 'flightsApp/flights.html', {'flightsNotFound': 'true'})
 
     flights = flight.objects.filter(
         arr_city=arr_city.city_id,
@@ -250,7 +254,8 @@ def flights_on_date(request, format=None):
     serializer = flightSerializer(flights, many=True)
     # return Response(serializer.data)
     context = {
-        'flights': serializer.data
+        'flights': serializer.data,
+        'flightsNotFound': False
     }
     return render(request, 'flightsApp/flights.html', context)
 

@@ -1,12 +1,13 @@
 {% extends "flightsApp/base.html" %}
 {% block content %}
+<div class="users-container">
     {% for airline in airlines %}
-    <br>
-    <div>
-        <span>Airline Id: {{ airline.Airline_id }}</span><br>
-        <span>Airline Name: {{ airline.Airline_name }}</span><br>
-        <span>Email Id: {{ airline.email }}</span><br>
-        <span>Phone No: {{ airline.phone }}</span><br>
+    <div class="airline-div">
+        <span><h4>Airline Id: </h4>{{ airline.Airline_id }}</span><br>
+        <span><h4>Airline Name: </h4>{{ airline.Airline_name }}</span><br>
+        <span><h4>Email Id: </h4>{{ airline.email }}</span><br>
+        <span><h4>Phone No: </h4>{{ airline.phone }}</span><br>
     </div>
     {% endfor %}
+</div>
 {% endblock content %}

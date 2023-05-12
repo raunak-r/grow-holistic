@@ -1,13 +1,14 @@
 {% extends "flightsApp/base.html" %}
 {% block content %}
+<div class="users-container">
     {% for booking in bookings %}
-<br>
-    <div>
-        <span>Booking Id: {{ booking.booking_id }}</span><br>
-        <span>Flight Id: {{ booking.flight_id }}</span><br>
-        <span>User Id: {{ booking.user_id }}</span><br>
-        <span>Order Date : {{ booking.order_date }}</span><br>
-        <span>Total Cost: {{ booking.total_cost }}</span><br>
+    <div class="booking-div">
+        <span><h4>Booking Id: </h4>{{ booking.booking_id }}</span><br>
+        <span><h4>Flight Id: </h4>{{ booking.flight_id }}</span><br>
+        <span><h4>User Id: </h4>{{ booking.user_id }}</span><br>
+        <span><h4>Order Date : </h4>{{ booking.order_date }}</span><br>
+        <span><h4>Total Cost: </h4>{{ booking.total_cost }}</span><br>
     </div>
     {% endfor %}
+</div>
 {% endblock content %}

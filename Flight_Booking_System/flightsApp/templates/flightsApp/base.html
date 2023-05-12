@@ -2,40 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
 
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'flightsApp/base.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'flightsApp/home.css' %}">
+    <link href="{% static 'flightsApp/base.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'flightsApp/home.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'flightsApp/users.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'flightsApp/flights.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'flightsApp/cities.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'flightsApp/bookings.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'flightsApp/airlines.css' %}" rel="stylesheet" type="text/css">
 
     {% if title %}
-        <title>Flight Booking System - {{ title }}</title>
+    <title>Flight Booking System - {{ title }}</title>
     {% else %}
-        <title>Flight Booking System</title>
+    <title>Flight Booking System</title>
     {% endif %}
 </head>
 <body>
-    <header class="site-header">
-        <nav class="navbar">
-            <div class="container">
-                <a class="navbar-home" href="{% url 'home_page' %}"><h1>Flight Booking System</h1></a>
-                <div class="navbar-menu">
-                  <a  href="{% url 'home_page' %}">Home</a>
-                  <a  href="{% url 'home_page' %}">About</a>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}{% endblock %}
+<header class="site-header">
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-home" href="{% url 'home_page' %}"><h1>Flight Booking System</h1></a>
+            <div class="navbar-menu">
+                <a href="{% url 'home_page' %}">Home</a>
+                <a href="{% url 'home_page' %}">About</a>
             </div>
         </div>
-    </main>
+    </nav>
+</header>
+
+<main class="container" role="main">
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</main>
 
 </body>
 </html>

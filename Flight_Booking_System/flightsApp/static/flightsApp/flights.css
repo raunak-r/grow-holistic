@@ -1,0 +1,70 @@
+.flights-container{
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+.flights-title h2{
+    width: 100%;
+    position: absolute;
+    top: -20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+.flights-error-title{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flights-error-title a{
+    padding: 10px 20px;
+    margin: 15px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(to right, #1369A0 0%, #01e5da 51%, #1369A0  100%);
+    text-align: center;
+    background-size: 200% auto;
+    border-radius: 25px;
+    box-shadow: 0 0 20px #eee;
+    display: block;
+    transition: 0.5s;
+}
+.flights-error-title a:hover{
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+.flight-div{
+    flex: 0 0 calc(33% - 1em);
+    min-height: 120px;
+    margin: 0.25em 0.5em;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    box-shadow:
+    1px 2px 2px hsla(222, 42%, 75%, 0.333),
+    2px 4px 4px hsla(221, 44%, 74%, 0.333),
+    3px 6px 6px hsla(220, 38%, 71%, 0.333);
+}
+.flight-div span{
+    display: inline-flexbox;
+}
+.flight-div span h4{
+    display: inline;
+    color: #37749b;
+    font-weight: 700;
+}

@@ -1,0 +1,35 @@
+.users-container{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+.user-div{
+    flex: 0 0 calc(33% - 1em);
+    min-height: 120px;
+    min-width: 300px;
+    margin: 0.25em 0.5em;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    box-shadow:
+    1px 2px 2px hsla(222, 42%, 75%, 0.333),
+    2px 4px 4px hsla(221, 44%, 74%, 0.333),
+    3px 6px 6px hsla(220, 38%, 71%, 0.333);
+}
+.user-div span{
+    display: inline-flexbox;
+}
+.user-div span h4{
+    display: inline;
+    color: #37749b;
+    font-weight: 700;
+}
