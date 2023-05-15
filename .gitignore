@@ -1,0 +1,10 @@
+*.pyc
+venv_*/
+venv/
+venv_*/
+venv_wp/
+venv*/
+staticfiles/
+temp_media/
+*.idea
+
