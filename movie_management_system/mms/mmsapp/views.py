@@ -15,9 +15,13 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
+from django.shortcuts import render
 
 
 # Create your views here.
+def home_page(request, format=None):
+    return render(request, 'mmsapp/home.html')
+
 
 # @api_view(['GET', 'POST','PUT','PATCH','DELETE'])
 # @csrf_exempt
