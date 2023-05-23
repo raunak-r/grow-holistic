@@ -4,6 +4,7 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import os, environ
+from decouple import config
 
 env = environ.Env(
     # set casting, default value
@@ -80,28 +81,16 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if os.environ.get('DB_ENGINE') and os.environ.get('DB_ENGINE') == "mysql":
-    DATABASES = { 
-      'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangocomp',
-        'USER': 'postgres',
-        'PASSWORD': 'Bharath@27',
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('name'),
+        'USER': config('user'),
+        'PASSWORD': config('password'),
         'HOST': 'localhost',
         'PORT': '',
-        }, 
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'djangocomp',
-            'USER': 'postgres',
-            'PASSWORD': 'Bharath@27',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
