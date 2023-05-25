@@ -8,7 +8,7 @@ from rest_framework.test import APIClient, APITestCase
 from mmsapp.models import User
 
 # Create your tests here.
-class USEERTESTVIEW(APITestCase):
+class USERTESTVIEW(APITestCase):
     def setUp(self):
         self.client=APIClient()
         self.user=User.objects.create(

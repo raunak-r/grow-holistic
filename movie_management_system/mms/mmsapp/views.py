@@ -1,26 +1,28 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from .models import User, Movie, Genre, Review, Moviecast, Moviedirector, Watchlist
-from .serializers import UserSerializer, MovieSerializer, MovienSerializer, GenreSerializer, ReviewSerializer, \
-    MoviecastSerializer, MoviedirectorSerializer, WatchlistSerializer
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
-from django.db.models import Subquery, OuterRef
+from django.db.models import Subquery
 from rest_framework import serializers
 import datetime
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
-from django.shortcuts import render
 
+from .models import User, Movie, Genre, Review, MovieCast, MovieDirector, Watchlist
+from .serializers import UserSerializer, MovieSerializer, MovienSerializer, GenreSerializer, ReviewSerializer, \
+    MovieCastSerializer, MovieDirectorSerializer, WatchlistSerializer
 
 # Create your views here.
-def home_page(request, format=None):
-    return render(request, 'mmsapp/home.html')
+
+
+def home_page(request):
+
+    return render(request, 'mmsapp/home.html', {'title':'Home'})
 
 
 # @api_view(['GET', 'POST','PUT','PATCH','DELETE'])
@@ -90,52 +92,60 @@ def home_page(request, format=None):
 
 
 class UserList(APIView):
+
     def get(self, request, format=None):
-        airlines = User.objects.all()
-        serializer = UserSerializer(airlines, many=True)
-        return Response(serializer.data)
-            
-    def post(self,request,format=None):
-        jsonData = JSONParser().parse(request)
-        serializer = UserSerializer(data=jsonData)
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        context = {
+            'users': serializer.data
+        }
+        return render(request, 'mmsapp/user.html', context)
+
+    def post(self, request, format=None):
+        # jsonData = JSONParser().parse(request)
+        serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, safe=False)
+
+
 class UserDetails(APIView):
-    def get(self,request,user_id=None,format=None):
+
+    def get(self,request,user_id=None, format=None):
         if user_id is not None:
-            #retreive only that user
-            user_obj= User.objects.filter(user_id=user_id)
+            user_obj = User.objects.filter(user_id=user_id)
             if user_obj.exists():
                 serializer = UserSerializer(user_obj, many=True)
-                return JsonResponse({'user':serializer.data})
+                return JsonResponse({'user': serializer.data})
             else:
                 return JsonResponse(status=status.HTTP_404_NOT_FOUND)
         else:
             users = User.objects.all()
             serializer = UserSerializer(users, many=True)
-            return JsonResponse({'users': serializer.data}) 
-    def put(self,request,user_id=None,format=None):
-        jsonData = JSONParser().parse(request)
+            return JsonResponse({'users': serializer.data})
+
+    def put(self,request,user_id=None, format=None):
+        # jsonData = JSONParser().parse(request)
         user = User.objects.get(user_id=user_id)
-        serializer = UserSerializer(user, data=jsonData)
+        serializer = UserSerializer(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_200_OK)
         else:
             return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def patch(self,request,user_id=None,format=None):
-            jsonData = JSONParser().parse(request)
-            user = User.objects.get(user_id=user_id)
-            serializer = UserSerializer(user, data=jsonData,partial=True)
-            if serializer.is_valid():
-                serializer.save()
-                return JsonResponse(serializer.data, status=status.HTTP_200_OK)
-            else:
-                return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
+    def patch(self,request,user_id=None, format=None):
+        # jsonData = JSONParser().parse(request)
+        user = User.objects.get(user_id=user_id)
+        serializer = UserSerializer(user, data=request.data,partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     def delete(self,request,user_id=None,format=None):
         user = User.objects.get(user_id=user_id)
         user.delete()
@@ -146,8 +156,11 @@ class UserDetails(APIView):
 def movie_list(request):
     movies = Movie.objects.all()
     serializer = MovieSerializer(movies, many=True)
-    return JsonResponse({'movies': serializer.data})
-
+      # return JsonResponse({'movies': serializer.data})
+    context = {
+        'movies' : serializer.data
+    }
+    return render(request,'mmsapp/movie.html',context)
 
 @api_view(['GET'])
 def genre_list(request):

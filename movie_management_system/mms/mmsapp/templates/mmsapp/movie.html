@@ -1,0 +1,14 @@
+{% extends "mmsapp/base.html" %}
+{% block content %}
+<div class="movies-container">
+    {% for movie in movies %}
+    <div class="movie-div">
+        <span><h4>Movie Id: </h4>{{ movie.movie_id }}</span>
+        <span><h4>Movie Name : </h4>{{ movie.movie_name }}</span>
+        <span><h4>Release Year: </h4>{{ movie.release_year }}</span>
+        <span><h4>Rating : </h4>{{ movie.rating }}</span>
+        <span><h4>Genre Id : </h4>{{movie.genre_id }}</span>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

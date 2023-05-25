@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-     <h1>Home Page!</h1>
-</body>
-</html>
+{% extends "mmsapp/base.html" %}
+{% block content %}
+    <div class="home-page">
+    <h1>Home Page</h1>
+    <div class="home-list">
+        <a href="{% url 'user-list' %}">Users</a>
+        <a href="{% url 'movies-list' %}">Movies</a>
+        <a href="{% url 'genre-list' %}">Genres</a>
+    </div>
+{% endblock content %}

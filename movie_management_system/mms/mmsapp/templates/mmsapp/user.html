@@ -1,0 +1,12 @@
+{% extends "mmsapp/base.html" %}
+{% block content %}
+<div class="users-container">
+    {% for user in users %}
+    <div class="user-div">
+        <span><h4>user id: </h4>{{ user.user_id }}</span>
+        <span><h4>user name : </h4>{{ user.user_name }}</span>
+        <span><h4>user email: </h4>{{ user.user_email }}</span>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
