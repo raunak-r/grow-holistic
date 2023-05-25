@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='user',
+            name='User',
             fields=[
                 ('uset_id', models.AutoField(primary_key=True, serialize=False)),
                 ('first_name', models.CharField(max_length=100)),
@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=100, null=True)),
                 ('phone', models.CharField(null=True)),
                 ('address', models.CharField(max_length=200, null=True)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('User', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
                 ('order_date', models.DateField(auto_now_add=True)),
                 ('total_cost', models.DecimalField(decimal_places=2, max_digits=10, null=True)),
                 ('flight_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='flightsApp.flight')),
-                ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='flightsApp.user')),
+                ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='flightsApp.User')),
             ],
         ),
     ]

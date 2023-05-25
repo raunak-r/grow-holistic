@@ -13,7 +13,7 @@
         <form action="flights/results/" method="post">
             <!--                Here I am using POST method, so that sending data won't show-up in the Url-->
             <input name="csrfmiddlewaretoken" type="hidden" value="{{ csrf_token }}">
-            <!--            This is used to add a CSRF token to a form. CSRF stands for Cross-Site Request Forgery, and it is a type of attack that can be used to trick a user into performing actions on a website that they did not intend to perform.-->
+            <!--            This is used to add a CSRF token to a form. CSRF stands for Cross-Site Request Forgery, and it is a type of attack that can be used to trick a User into performing actions on a website that they did not intend to perform.-->
             <div class="form-inputs">
                 <input list="arr_city" name="arr_city" placeholder="From" required type="text">
                 <datalist class="select-city" id="arr_city">

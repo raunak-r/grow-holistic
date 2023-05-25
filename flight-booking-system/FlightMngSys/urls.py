@@ -25,8 +25,8 @@ urlpatterns = format_suffix_patterns([
     path('admin/', admin.site.urls),
     path('', views.home_page, name='home_page'),
 
-    path('users/', views.user_list, name='user-list'),
-    path('users/<int:pk>/', views.user_detail, name='user-detail'),
+    path('users/', views.user_list, name='User-list'),
+    path('users/<int:pk>/', views.user_detail, name='User-detail'),
 
     path('airlines/', views.AirlineList.as_view(), name='airline-list'),
     path('airlines/<int:pk>/', views.AirlineDetail.as_view(), name='airline-detail'),

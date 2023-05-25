@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from django.core.exceptions import ObjectDoesNotExist
-from .models import user, airline, city, flight, booking
+from .models import User, airline, city, flight, booking
 from .serializers import userSerializer, airlineSerializer, citySerializer, flightSerializer, bookingSerializer
 
 
@@ -26,7 +26,7 @@ def user_list(request, format=None):
     # serialize them
     # return response
     if request.method == 'GET':
-        User = user.objects.all()
+        User = User.objects.all()
         serializer = userSerializer(User, many=True)
         # return Response(serializer.data)
         context = {
@@ -42,7 +42,7 @@ def user_list(request, format=None):
 
 @api_view(['Get'])
 def user_detail(request, pk, format=None):
-    User = user.objects.filter(user_id=pk)
+    User = User.objects.filter(user_id=pk)
     serializer = bookingSerializer(User, many=True)
     return Response(serializer.data)
 

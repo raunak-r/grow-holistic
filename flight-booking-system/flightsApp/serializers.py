@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import user, airline, city, flight, booking
+from .models import User, airline, city, flight, booking
 
 
 class userSerializer(serializers.ModelSerializer):
     class Meta:
-        model = user
+        model = User
         fields = '__all__'
 
 
