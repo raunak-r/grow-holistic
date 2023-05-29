@@ -1,4 +1,11 @@
 from django.db import models
+from django.db.models import Q
+
+
+class FlightManager(models.Manager):
+    def search(self, arr_city, des_city, date):
+        lookups = Q(arr_city=arr_city) & Q(des_city=des_city) & Q(date=date)
+        return self.get_queryset().filter(lookups)
 
 
 # Create your models here.
@@ -28,6 +35,9 @@ class airline(models.Model):
     def __str__(self):
         return self.Airline_name
 
+    class Meta:
+        ordering = ["Airline_id"]
+
 
 class city(models.Model):
     city_id = models.AutoField(primary_key=True)
@@ -36,6 +46,9 @@ class city(models.Model):
 
     def __str__(self):
         return self.city_name
+
+    class Meta:
+        ordering = ["city_id"]
 
 
 class flight(models.Model):
@@ -49,8 +62,13 @@ class flight(models.Model):
     number_of_seats = models.IntegerField(null=True, blank=False)
     price = models.DecimalField(decimal_places=2, max_digits=10, null=True, blank=False)
 
+    objects = FlightManager()
+
     def __int__(self):
         return self.filght_id
+
+    class Meta:
+        ordering = ["filght_id"]
 
 
 class booking(models.Model):
@@ -62,3 +80,6 @@ class booking(models.Model):
 
     def __int__(self):
         return self.booking_id
+
+    class Meta:
+        ordering = ["booking_id"]

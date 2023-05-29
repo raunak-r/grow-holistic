@@ -26,8 +26,8 @@ def user_list(request, format=None):
     # serialize them
     # return response
     if request.method == 'GET':
-        User = User.objects.all()
-        serializer = userSerializer(User, many=True)
+        user = User.objects.all()
+        serializer = userSerializer(user, many=True)
         # return Response(serializer.data)
         context = {
             'users': serializer.data
@@ -243,11 +243,11 @@ def flights_on_date(request, format=None):
     except ObjectDoesNotExist:
         return render(request, 'flightsApp/flights.html', {'flightsNotFound': 'true'})
 
-    flights = flight.objects.filter(
-        arr_city=arr_city.city_id,
-        des_city=des_city.city_id,
-        date=date,
-    )
+    flights = flight.objects.search( arr_city.city_id, des_city.city_id, date)
+    #     arr_city=arr_city.city_id,
+    #     des_city=des_city.city_id,
+    #     date=date,
+    # )
     if not flights:
         return render(request, 'flightsApp/flights.html', {'flightsNotFound': 'true'})
 
