@@ -1,8 +1,10 @@
 import os
 import django
 from django.core.management.base import BaseCommand
-from flightsApp.models import User
+from django.db.models import Max
+from flightsApp.models import flight, airline, city
 from faker import Faker
+import random
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "FlightMngSys.settings")
 django.setup()
@@ -15,22 +17,20 @@ class Command(BaseCommand):
         fake = Faker()
 
         for _ in range(50):
-            first_name = fake.first_name()
-            last_name = fake.last_name()
-            dob = fake.date_of_birth(minimum_age=0, maximum_age=100)
-            passport_number = fake.random_int(min=100000, max=999999)
-            email = fake.email()
-            phone = fake.phone_number()
-            address = fake.address().replace('\n', ', ')
+            airline_name = airline.objects.order_by('?').first()
+            arr_city = city.objects.order_by('?').first()
+            des_city = city.objects.exclude(pk=arr_city.pk).order_by('?').first()
+            date = fake.date_between(start_date='-30d', end_date='+30d')
+            number_of_seats = random.randint(100, 400)
+            price = random.randint(1000, 5000)
 
             # Create a new User and save it to the database
-            user = User.objects.create(
-                first_name=first_name,
-                last_name=last_name,
-                dob=dob,
-                passport_number=passport_number,
-                email=email,
-                phone=phone,
-                address=address
+            Flight = flight.objects.create(
+                airline_name=airline_name,
+                arr_city=arr_city,
+                des_city=des_city,
+                date=date,
+                number_of_seats=number_of_seats,
+                price=price,
             )
-            user.save()
+            Flight.save()
