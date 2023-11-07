@@ -1,6 +1,22 @@
-# Basic Day 1 Downloads
+# How to google
+- The most important skill that anyone can develop in this 21st century is to how to google efficiently.
+Given the amount of knowledge that is present, how can find the most relevant information?
 
-IDE
+- [How to use search](https://www.mindtools.com/pages/article/internet-searching.htm)
+- How to use google](https://searchengineland.com/guide/how-to-use-google-to-search)
+- [Tips to search better](https://www.theguardian.com/technology/2016/jan/15/how-to-use-search-like-a-pro-10-tips-and-tricks-for-google-and-beyond)
+- [What is stackoverflow?](https://stackoverflow.blog/2019/08/07/what-every-developer-should-learn-early-on/)
+
+# Books (Must Read)
+Make a habit to read 1 chapter every week.
+- Clean Code by Robert C. Martin - https://www.pdfdrive.com/a-handbook-of-agile-software-craftsmanship-by-robert-c-martinpdf-e36963194.html
+ 
+# Ubuntu Setup
+
+Ubuntu Setup - https://github.com/raunak-r/tech-notes/blob/master/ubuntu-firstinstall.sh
+Learn on how to run a sh file
+
+IDE that will be installed (these would already be installed from above)
 - Intellij COMMUNITY - https://www.jetbrains.com/idea/download/#section=linux
 - Visual Studio Code - Community
 - Pycharm Community
@@ -20,25 +36,18 @@ Office Tools
 - Teams
 - Outlook/Email Client
 
-# How to google
-- The most important skill that anyone can develop in this 21st century is to how to google efficiently.
-Given the amount of knowledge that is present, how can find the most relevant information?
-
-- [How to use search](https://www.mindtools.com/pages/article/internet-searching.htm)
-- How to use google](https://searchengineland.com/guide/how-to-use-google-to-search)
-- [Tips to search better](https://www.theguardian.com/technology/2016/jan/15/how-to-use-search-like-a-pro-10-tips-and-tricks-for-google-and-beyond)
-- [What is stackoverflow?](https://stackoverflow.blog/2019/08/07/what-every-developer-should-learn-early-on/)
-
-# Books (Must Read)
-
-Make a habit to read 1 chapter every week.
-
-- Clean Code by Robert C. Martin - https://www.pdfdrive.com/a-handbook-of-agile-software-craftsmanship-by-robert-c-martinpdf-e36963194.html
-
-
-# Everyday Tools 
+# Videos to Watch
 (Study this on basis of your choice of language)
 
+## Know your IDE
+- VSCode - https://www.youtube.com/watch?v=VqCgcpAypFQ&ab_channel=Academind
+- Pycharm - https://www.youtube.com/watch?v=56bPIGf4us0&ab_channel=TechWithTim
+
+## Git
+- https://www.youtube.com/results?search_query=how+to+open+pull+request+in+github
+- https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=3640s&ab_channel=ApnaCollege
+
+## Debugging
 - Learn Debugging in your terminal
     - IDEA - watch debug video - [https://www.youtube.com/watch?v=-_tVIgImb5c&ab_channel=LearningFromExperience](https://www.youtube.com/watch?v=sWmsPGb8WcQ&ab_channel=LearningFromExperience)
     - Pycharm/Python - how to use pdb - https://www.youtube.com/watch?v=bHx8A8tbj2c &
