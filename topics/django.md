@@ -6,7 +6,6 @@
 Refer [Python & Pycharm Setup in Windows](https://gist.github.com/raunak-r/15fb871765e56ebe7a05bb6f42fc24d2)
 ```
 
-
 ## Part B (Data) - Day 2
 A small project has to be created in Django now. There will be 2 components (Data & APIs to serve that data), one for each day, and 2 days for spillovers.
 
@@ -49,9 +48,7 @@ From postman, on calling that API, all the data from that table should be return
 # Baby Basics
 ```
 https://roadmap.sh/backend
-
 Backend ; https://www.youtube.com/watch?v=0Kv_k4ypj6o
-
 MVC ; https://www.youtube.com/watch?v=DUg2SWWK18I
 ```
 
@@ -67,6 +64,8 @@ https://www.youtube.com/watch?v=SIyxjRJ8VNY&list=PLsyeobzWxl7r2ukVgTqIQcl-1T0C2m
 Writing first django app @https://docs.djangoproject.com/en/3.2/intro/tutorial01/
 
 Serialization @https://www.django-rest-framework.org/tutorial/1-serialization/
+
+Django Admin - https://www.youtube.com/playlist?list=PLOLrQ9Pn6cazhaxNDhcOIPYXt2zZhAXKO
 ```
 
 # Intermediate
