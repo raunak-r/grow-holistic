@@ -44,6 +44,7 @@ Office Tools
 - Pycharm - https://www.youtube.com/watch?v=56bPIGf4us0&ab_channel=TechWithTim
 
 ## Git
+- PAT - https://www.youtube.com/watch?v=bc3_FL9zWWs&ab_channel=ProgrammingKnowledge
 - https://www.youtube.com/results?search_query=how+to+open+pull+request+in+github
 - https://www.youtube.com/watch?v=Ez8F0nW6S-w&t=3640s&ab_channel=ApnaCollege
 
