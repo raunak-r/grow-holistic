@@ -4,6 +4,11 @@ Refer https://angular.io/guide/architecture (Preferred)
 OR
 Refer https://www.w3resource.com/angular/getting-started-with-angular.php
 
+## DSA in Javascript
+```
+https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/
+```
+
 # Baby Basics
 ```
 https://angular.io/guide/example-apps-list#tour-of-heroes-tutorial-application-
