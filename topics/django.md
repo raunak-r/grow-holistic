@@ -119,5 +119,12 @@ write a simple one to just print("hey") as a management command
 Custom model_to_dict as a serializer
 Reverting django migrations? how to fix messed up migration
 where are migrations saved and tracked?
+```
 
+# Advanced
+```
+- select_related & prefetch_related
+- triggers
+- celery tasks
+- api caching
 ```
