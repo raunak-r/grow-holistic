@@ -1,5 +1,6 @@
 # Caching & Sharding
 Read the topic on - How Figma Scaled their Database Stack - https://blog.quastor.org/p/figma-scaled-databases-100x
+Read about flask - https://www.youtube.com/watch?v=45P3xQPaYxc&list=PLD84h-MoC8CjniwrUvy7MkjTYV_xevCUh&ab_channel=CodewithJosh
 
 Your task is to create a Flask project that demonstrates different techniques for data retrieval and manipulation inspired by how Figma scaled their database stack.
 
