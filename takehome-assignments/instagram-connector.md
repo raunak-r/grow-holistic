@@ -11,7 +11,7 @@ As an applicant, your task is to implement an Instagram grid connector in Angula
 ```
 
 ## Deliverable 
-- You have to create a repository on your personal github. You're expected to have a minimum of 5 commits, to show how the code has grown over the course of your project. Kindly do not use the keyword "samaro" anywhere in your codebase.
+- You have to create a repository on your personal github. You're expected to have a minimum of 5 commits, to show how the code has grown over the course of your project. 
 
 ## Performance Criteria
 50% - Functional Aspect - Instagram grid connector
